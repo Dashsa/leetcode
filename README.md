@@ -1,2 +1,2 @@
 # leetcode
-repo to hold leetcode examples
+repo to hold leetcode examples.
