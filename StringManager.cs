@@ -70,13 +70,111 @@ public class StringManager
         var tempFreq = freqVals.First();
         foreach (var val in freqVals)
         {
-            if(val != tempFreq){
-                if(val - 1 == tempFreq){
-                    triggered ++;
+            if (val != tempFreq)
+            {
+                if (val - 1 == tempFreq)
+                {
+                    triggered++;
                 }
             }
         }
 
         return triggered == 1;
+    }
+
+    // Udemy Section 5 String question. 
+    // Typed out Strings. https://www.udemy.com/course/master-the-coding-interview-big-tech-faang-interviews/learn/lecture/19799318#overview
+
+    public bool TypedOutString(string s1, string s2)
+    {
+        return FormatString(s1) == FormatString(s2);
+    }
+
+    /// <summary>
+    /// This is using the TWO POINTER approach.
+    /// We want to use two pointers to compare the chars in the different strings. We cant start at the left as the backspaces will cause troubles.
+    /// </summary>
+    /// <param name="s1"></param>
+    /// <param name="s2"></param>
+    /// <returns></returns>
+    // public bool TypedOutStringOptimized(string s1, string s2)
+    // {
+
+    // }
+
+    public void TwoPointer(string testStr)
+    {
+        var lp = 0;
+        var rp = testStr.Length - 1;
+
+        while (lp <= rp)
+        {
+            if (lp == rp)
+            {
+                Console.WriteLine($"lp {testStr[lp]}");
+            }
+            else
+            {
+                Console.WriteLine($"lp {testStr[lp]}, rp: {testStr[rp]}");
+            }
+            lp++;
+            rp--;
+        }
+
+
+    }
+
+
+    public int TwoPointerWeight(int targetWeight, List<int> listOfAvailableWeights)
+    {
+        var lp = 0;
+        var rp = listOfAvailableWeights.Count() - 1;
+        var response = 0;
+
+        while (lp <= rp)
+        {
+            if (response == targetWeight)
+            {
+                break;
+            }
+
+            if (response + listOfAvailableWeights[rp] <= targetWeight)
+            {
+                response += listOfAvailableWeights[rp];
+                rp--;
+            }
+            else if (response + listOfAvailableWeights[lp] <= targetWeight)
+            {
+                response += listOfAvailableWeights[lp];
+                lp++;
+            }
+        }
+
+        return response;
+    }
+
+    private string? FormatString(string s)
+    {
+        var stack = new Stack<char>();
+        var sb = new StringBuilder();
+
+        foreach (var i in s)
+        {
+            if (i == '#' && stack.Count() > 0)
+            {
+                stack.Pop();
+            }
+            else if (i != '#')
+            {
+                stack.Push(i);
+            }
+        }
+
+
+        while (stack.Count() > 0)
+        {
+            sb.Append(stack.Pop());
+        }
+        return sb.ToString();
     }
 }

@@ -14,5 +14,10 @@ var arrayManager = new ArrayManager();
 // var result = stringManager.Interpret("(al)G(al)()()G");
 // var optimized =  stringManager.InterpretOptimal("(al)G(al)()()G");
 
-var result = stringManager.EqualFrequency("aazz");
+// var result = stringManager.EqualFrequency("aazz");
+
+// var result = stringManager.TypedOutString("abb#c", "#abcd########abc");
+
+stringManager.TwoPointerWeight(15, new List<int> { 1, 2, 3, 8, 9 });
+
 string stop = "stop";
