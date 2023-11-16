@@ -48,40 +48,6 @@ public class StringManager
         return command.Replace("()", "o").Replace("(al)", "al");
     }
 
-    // https://leetcode.com/problems/remove-letter-to-equalize-frequency/
-    // not working. "bac"
-    public bool EqualFrequency(string word)
-    {
-        var dict = new Dictionary<char, int>();
-        foreach (char i in word)
-        {
-            if (dict.ContainsKey(i))
-            {
-                dict[i] += 1;
-            }
-            else
-            {
-                dict.Add(i, 1);
-            }
-        }
-
-        var triggered = 0;
-        var freqVals = dict.Values.ToList();
-        var tempFreq = freqVals.First();
-        foreach (var val in freqVals)
-        {
-            if (val != tempFreq)
-            {
-                if (val - 1 == tempFreq)
-                {
-                    triggered++;
-                }
-            }
-        }
-
-        return triggered == 1;
-    }
-
     // Udemy Section 5 String question. 
     // Typed out Strings. https://www.udemy.com/course/master-the-coding-interview-big-tech-faang-interviews/learn/lecture/19799318#overview
 
