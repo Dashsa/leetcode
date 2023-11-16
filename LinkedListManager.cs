@@ -1,13 +1,9 @@
-using Microsoft.VisualBasic;
-
 public class LinkedListManager
 {
     public void Works()
     {
         Console.WriteLine("linkedList");
     }
-
-
 
     public ListNode MergeTwoLists(ListNode list1, ListNode list2)
     {
