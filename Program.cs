@@ -23,7 +23,7 @@ stringManager.TwoPointerWeight(15, new List<int> { 1, 2, 3, 8, 9 });
 // var searchInput = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 // var isFound = AlgoManager.BinarySearch(searchInput, 8);
 
-var input = new int[] {1 };// { 3, 2, 2, 3 };// {0,1,2,2,3,0,4,2 };
-var result = arrayManager.RemoveElement(input, 1);
-
+var input = new int[] { 3, 1, 7, 2, 9 };// { 3, 2, 2, 3 };// {0,1,2,2,3,0,4,2 };
+// var result = arrayManager.RemoveElement(input, 1);
+var result = arrayManager.TwoSum(input, 11);
 string stop = "stop";

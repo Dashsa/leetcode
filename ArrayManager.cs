@@ -80,4 +80,28 @@ public class ArrayManager
         return counter;
     }
 
+    public List<int> TwoSum(int[] input, int target)
+    {
+        // this holds the indexes of the inputs that add up to the target.
+        var resultIndex = new List<int>();
+
+        // key = index, value = value
+        var sumDict = new Dictionary<int, int>();
+
+        for (var i = 0; i < input.Length; i++)
+        {
+
+            if (sumDict.ContainsValue(target - input[i]))
+            {
+                var index = sumDict.Where(c => c.Value == target - input[i]).FirstOrDefault();
+                resultIndex.Add(index.Key);
+                resultIndex.Add(i);
+            }
+            else
+            {
+                sumDict.Add(i, input[i]);
+            }
+        }
+        return resultIndex;
+    }
 }
