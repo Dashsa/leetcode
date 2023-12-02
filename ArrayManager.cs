@@ -104,4 +104,39 @@ public class ArrayManager
         }
         return resultIndex;
     }
+
+    // https://leetcode.com/problems/plus-one/
+    //[9] >>[1, 0]. [1, 3, 2] >> [1, 3, 3]
+    public int[] PlusOne(int[] digits)
+    {
+        var last = digits.Length - 1;
+
+
+
+        for (var i = last; i >= 0; i--)
+        {
+
+        }
+        return digits;
+    }
+
+    // https://leetcode.com/problems/find-words-containing-character/
+    public IList<int> FindWordsContaining(string[] words, char x)
+    {
+        var result = new List<int>();
+        var counter = 0;
+        foreach (var word in words)
+        {
+            foreach (char letter in word)
+            {
+                if (letter == x)
+                {
+                    result.Add(counter);
+                    break;
+                }
+            }
+            counter++;
+        }
+        return result;
+    }
 }
