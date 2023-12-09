@@ -3,6 +3,7 @@ var leetEasy = new LeetEasy();
 var stringManager = new StringManager();
 var arrayManager = new ArrayManager();
 var AlgoManager = new AlgoManager();
+var nodeManager = new NodeManager();
 
 leetEasy.Works();
 // stringManager.Works();
@@ -23,7 +24,15 @@ stringManager.TwoPointerWeight(15, new List<int> { 1, 2, 3, 8, 9 });
 // var searchInput = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 // var isFound = AlgoManager.BinarySearch(searchInput, 8);
 
-var input = new int[] { 3, 1, 7, 2, 9 };// { 3, 2, 2, 3 };// {0,1,2,2,3,0,4,2 };
+//var input = new int[] { 3, 1, 7, 2, 9 };// { 3, 2, 2, 3 };// {0,1,2,2,3,0,4,2 };
 // var result = arrayManager.RemoveElement(input, 1);
-var result = arrayManager.TwoSum(input, 11);
+//var result = arrayManager.TwoSum(input, 11);
+
+// var input = new int[] { 3, 1, 7, 2 };
+// var result = arrayManager.PlusOne(input);
+
+//var foo = nodeManager.TestTrees();
+
+var input = new string[] { "leet", "code" };
+var result = arrayManager.FindWordsContaining(input, 'e');
 string stop = "stop";
