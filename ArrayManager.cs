@@ -139,4 +139,32 @@ public class ArrayManager
         }
         return result;
     }
+
+    // https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+    public int RemoveDuplicates(int[] nums)
+    {
+
+        if (nums.Length == 0)
+            return 0;
+
+        var result = 1;
+        var leftPointer = 0;
+        var rightPointer = 1;
+
+        while (leftPointer <= nums.Length - 1 && rightPointer <= nums.Length - 1)
+        {
+            if (nums[leftPointer] == nums[rightPointer])
+            {
+                rightPointer++;
+            }
+            else
+            {
+                nums[leftPointer + 1] = nums[rightPointer];
+                leftPointer++;
+                result++;
+            }
+        }
+
+        return result;
+    }
 }

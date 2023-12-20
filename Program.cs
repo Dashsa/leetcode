@@ -33,6 +33,13 @@ stringManager.TwoPointerWeight(15, new List<int> { 1, 2, 3, 8, 9 });
 
 //var foo = nodeManager.TestTrees();
 
-var input = new string[] { "leet", "code" };
-var result = arrayManager.FindWordsContaining(input, 'e');
+// var input = new string[] { "leet", "code" };
+// var result = arrayManager.FindWordsContaining(input, 'e');
+
+// var input = new int[] { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
+// var result = arrayManager.RemoveDuplicates(input);
+var input = new int[] { 1, 2, 2 };
+//var result = leetEasy.ContainsNearbyDuplicate(input, 1);
+
+var result = leetEasy.BuyChoco(input, 3);
 string stop = "stop";
