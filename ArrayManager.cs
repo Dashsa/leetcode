@@ -1,40 +1,31 @@
 using System.Data.Common;
 using System.Runtime.CompilerServices;
 
-public class ArrayManager
-{
-    public void Works()
-    {
-        Console.WriteLine("Array Manager");
+public class ArrayManager {
+    public void Works () {
+        Console.WriteLine ("Array Manager");
         var myArray = new string[] { "a", "b", "c" };
 
-        myArray.Append("d");
-        myArray.Prepend("ss");
-
+        myArray.Append ("d");
+        myArray.Prepend ("ss");
 
     }
 
-    public void ArrayUtil()
-    {
+    public void ArrayUtil () {
         var myArray = new int[] { 1, 2, 3, 4, 5, 6, };
 
-        for (int i = 0; i < myArray.Length; i++)
-        {
-            Console.WriteLine(myArray[i]);
+        for (int i = 0; i < myArray.Length; i++) {
+            Console.WriteLine (myArray[i]);
         }
     }
 
     // https://leetcode.com/problems/number-of-good-pairs/
     // works.
-    public int NumIdenticalPairs(int[] nums)
-    {
+    public int NumIdenticalPairs (int[] nums) {
         var result = 0;
-        for (var i = 0; i <= nums.Length - 1; i++)
-        {
-            for (var j = i + 1; j <= nums.Length - 1; j++)
-            {
-                if (nums[i] == nums[j] && i < j)
-                {
+        for (var i = 0; i <= nums.Length - 1; i++) {
+            for (var j = i + 1; j <= nums.Length - 1; j++) {
+                if (nums[i] == nums[j] && i < j) {
                     result++;
                 }
             }
@@ -45,34 +36,27 @@ public class ArrayManager
 
     // https://leetcode.com/problems/remove-element/
     // Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
-    public int RemoveElement(int[] nums, int val)
-    {
+    public int RemoveElement (int[] nums, int val) {
         var lastPlace = nums.Length - 1;
-        var safeToUse = new Queue<int>(0);
+        var safeToUse = new Queue<int> (0);
         var counter = 0;
-        for (var i = 0; i < nums.Length - 1; i++)
-        {
-            if (nums[i] == val)
-            {
+        for (var i = 0; i < nums.Length - 1; i++) {
+            if (nums[i] == val) {
                 // we can replace, and make currentPlace
-                if (nums[lastPlace] == val)
-                {
-                    safeToUse.Enqueue(i);
-                }
-                else // we need to keep this val
+                if (nums[lastPlace] == val) {
+                    safeToUse.Enqueue (i);
+                } else // we need to keep this val
                 {
                     nums[i] = nums[lastPlace];
                     lastPlace -= 1;
                 }
-            }
-            else
-            {
+            } else {
                 counter++;
-                if (safeToUse.Count > 0 && safeToUse.Peek() != i) // we only need to move if we are not at the same place.
+                if (safeToUse.Count > 0 && safeToUse.Peek () != i) // we only need to move if we are not at the same place.
                 {
-                    nums[safeToUse.Dequeue()] = nums[i];
+                    nums[safeToUse.Dequeue ()] = nums[i];
                     nums[i] = val;
-                    safeToUse.Enqueue(i);
+                    safeToUse.Enqueue (i);
                 }
             }
         }
@@ -80,26 +64,21 @@ public class ArrayManager
         return counter;
     }
 
-    public List<int> TwoSum(int[] input, int target)
-    {
+    public List<int> TwoSum (int[] input, int target) {
         // this holds the indexes of the inputs that add up to the target.
-        var resultIndex = new List<int>();
+        var resultIndex = new List<int> ();
 
         // key = index, value = value
-        var sumDict = new Dictionary<int, int>();
+        var sumDict = new Dictionary<int, int> ();
 
-        for (var i = 0; i < input.Length; i++)
-        {
+        for (var i = 0; i < input.Length; i++) {
 
-            if (sumDict.ContainsValue(target - input[i]))
-            {
-                var index = sumDict.Where(c => c.Value == target - input[i]).FirstOrDefault();
-                resultIndex.Add(index.Key);
-                resultIndex.Add(i);
-            }
-            else
-            {
-                sumDict.Add(i, input[i]);
+            if (sumDict.ContainsValue (target - input[i])) {
+                var index = sumDict.Where (c => c.Value == target - input[i]).FirstOrDefault ();
+                resultIndex.Add (index.Key);
+                resultIndex.Add (i);
+            } else {
+                sumDict.Add (i, input[i]);
             }
         }
         return resultIndex;
@@ -107,31 +86,30 @@ public class ArrayManager
 
     // https://leetcode.com/problems/plus-one/
     //[9] >>[1, 0]. [1, 3, 2] >> [1, 3, 3]
-    public int[] PlusOne(int[] digits)
-    {
+    public int[] PlusOne (int[] digits) {
         var last = digits.Length - 1;
+        for (var i = last; i >= 0; i--) {
+            if (digits[i] < 9) {
+                digits[i]++;
+                return digits;
+            }
 
-
-
-        for (var i = last; i >= 0; i--)
-        {
+            digits[i] = 0;
 
         }
-        return digits;
+        var foo = new int[digits.Length + 1];
+        foo[0] = 1;
+        return foo;
     }
 
     // https://leetcode.com/problems/find-words-containing-character/
-    public IList<int> FindWordsContaining(string[] words, char x)
-    {
-        var result = new List<int>();
+    public IList<int> FindWordsContaining (string[] words, char x) {
+        var result = new List<int> ();
         var counter = 0;
-        foreach (var word in words)
-        {
-            foreach (char letter in word)
-            {
-                if (letter == x)
-                {
-                    result.Add(counter);
+        foreach (var word in words) {
+            foreach (char letter in word) {
+                if (letter == x) {
+                    result.Add (counter);
                     break;
                 }
             }
@@ -141,8 +119,7 @@ public class ArrayManager
     }
 
     // https://leetcode.com/problems/remove-duplicates-from-sorted-array/
-    public int RemoveDuplicates(int[] nums)
-    {
+    public int RemoveDuplicates (int[] nums) {
 
         if (nums.Length == 0)
             return 0;
@@ -151,14 +128,10 @@ public class ArrayManager
         var leftPointer = 0;
         var rightPointer = 1;
 
-        while (leftPointer <= nums.Length - 1 && rightPointer <= nums.Length - 1)
-        {
-            if (nums[leftPointer] == nums[rightPointer])
-            {
+        while (leftPointer <= nums.Length - 1 && rightPointer <= nums.Length - 1) {
+            if (nums[leftPointer] == nums[rightPointer]) {
                 rightPointer++;
-            }
-            else
-            {
+            } else {
                 nums[leftPointer + 1] = nums[rightPointer];
                 leftPointer++;
                 result++;
@@ -166,5 +139,50 @@ public class ArrayManager
         }
 
         return result;
+    }
+
+    // https://leetcode.com/problems/merge-sorted-array/description/
+    // FILING SOME EDGE CASES.
+    public void Merge (int[] nums1, int m, int[] nums2, int n) {
+        if (m == 0 || n == 0) {
+            if (m == 0) {
+                nums1 = nums2;
+            }
+
+        } else {
+            var temp = new int[m + n];
+            var lp = 0;
+            var rp = 0;
+            var counter = 0;
+            while (lp < m || rp < n) {
+                if (lp < m && nums1[lp] <= nums2[rp]) {
+                    temp[counter] = nums1[lp];
+                    lp++;
+                } else {
+                    temp[counter] = nums2[rp];
+                    rp++;
+                }
+                counter++;
+            }
+            nums1 = temp;
+        }
+    }
+
+    // https://leetcode.com/problems/best-time-to-buy-and-sell-stock/?envType=study-plan-v2&envId=top-interview-150
+    // Sliding window approach.
+    public int MaxProfit (int[] prices) {
+        var profit = 0;
+        var lp = 0; // buy
+        var rp = 1; // sell
+
+        while (rp < prices.Length) {
+            if (prices[lp] < prices[rp]) { // we have profit.
+                profit = Math.Max (profit, prices[rp] - prices[lp]);
+            } else {
+                lp = rp; // we know that this sell is less than buy, so we move the buy to here.
+            }
+            rp++; // always move this, so that we can compare each potential day.
+        }
+        return profit;
     }
 }
