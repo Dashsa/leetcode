@@ -164,4 +164,21 @@ public class StringManager
         return 0;
     }
 
+    public string DefangIPaddr(string address)
+    {
+        var sb = new StringBuilder();
+        foreach (var i in address)
+        {
+            if (i == '.')
+            {
+                sb.Append("[.]");
+            }
+            else
+            {
+                sb.Append(i);
+            }
+        }
+        return sb.ToString();
+    }
+
 }

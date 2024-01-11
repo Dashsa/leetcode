@@ -4,6 +4,7 @@ var stringManager = new StringManager();
 var arrayManager = new ArrayManager();
 var AlgoManager = new AlgoManager();
 var nodeManager = new NodeManager();
+var resursionManager = new RecursionManager();
 
 leetEasy.Works();
 // stringManager.Works();
@@ -38,8 +39,11 @@ stringManager.TwoPointerWeight(15, new List<int> { 1, 2, 3, 8, 9 });
 
 // var input = new int[] { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
 // var result = arrayManager.RemoveDuplicates(input);
-var input = new int[] { 1, 2, 2 };
+// var input = new int[] { 1, 2, 2 };
 //var result = leetEasy.ContainsNearbyDuplicate(input, 1);
 
-var result = leetEasy.BuyChoco(input, 3);
+// var result = leetEasy.BuyChoco(input, 3);
+// var result = stringManager.DefangIPaddr("1.1.1.1");
+
+var foo = resursionManager.Fibonacci(8);
 string stop = "stop";
