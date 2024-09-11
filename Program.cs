@@ -6,7 +6,8 @@ var AlgoManager = new AlgoManager();
 var nodeManager = new NodeManager();
 var resursionManager = new RecursionManager();
 
-leetEasy.Works();
+
+//leetEasy.Works();
 // stringManager.Works();
 // arrayManager.Works();
 
@@ -17,7 +18,7 @@ leetEasy.Works();
 
 // var result = stringManager.TypedOutString("abb#c", "#abcd########abc");
 
-stringManager.TwoPointerWeight(15, new List<int> { 1, 2, 3, 8, 9 });
+// stringManager.TwoPointerWeight(15, new List<int> { 1, 2, 3, 8, 9 });
 
 // var nums = new int[] { 1, 2, 3, 1, 1, 3 };
 // var result = arrayManager.NumIdenticalPairs(nums);
@@ -25,8 +26,8 @@ stringManager.TwoPointerWeight(15, new List<int> { 1, 2, 3, 8, 9 });
 // var searchInput = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 // var isFound = AlgoManager.BinarySearch(searchInput, 8);
 
-//var input = new int[] { 3, 1, 7, 2, 9 };// { 3, 2, 2, 3 };// {0,1,2,2,3,0,4,2 };
-// var result = arrayManager.RemoveElement(input, 1);
+// var input = new int[] { 3, 3 };// { 3, 2, 2, 3 };// {0,1,2,2,3,0,4,2 };
+// var result = arrayManager.RemoveElement(input, 5);
 //var result = arrayManager.TwoSum(input, 11);
 
 // var input = new int[] { 3, 1, 7, 2 };
@@ -45,5 +46,20 @@ stringManager.TwoPointerWeight(15, new List<int> { 1, 2, 3, 8, 9 });
 // var result = leetEasy.BuyChoco(input, 3);
 // var result = stringManager.DefangIPaddr("1.1.1.1");
 
-var foo = resursionManager.Fibonacci(8);
+//var foo = resursionManager.Fibonacci(8);
+
+// var s = "hello";
+// var result = leetEasy.ScoreOfString(s);
+// var haystack = "mississippi";
+// var needle = "issipi";
+// var result = stringManager.StrStr(haystack, needle);
+
+var tree = new Node();
+tree = tree.CreateExampleTree(tree);
+
+var bfs = new BreadthFirstSearch();
+var result = bfs.BFS(tree, 9);
+
+
+
 string stop = "stop";

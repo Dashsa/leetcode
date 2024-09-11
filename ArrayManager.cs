@@ -44,39 +44,31 @@ public class ArrayManager
     }
 
     // https://leetcode.com/problems/remove-element/
-    // Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
+    // Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. 
+    // The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
     public int RemoveElement(int[] nums, int val)
     {
-        var lastPlace = nums.Length - 1;
-        var safeToUse = new Queue<int>(0);
-        var counter = 0;
-        for (var i = 0; i < nums.Length - 1; i++)
-        {
-            if (nums[i] == val)
-            {
-                // we can replace, and make currentPlace
-                if (nums[lastPlace] == val)
-                {
-                    safeToUse.Enqueue(i);
-                }
-                else // we need to keep this val
-                {
-                    nums[i] = nums[lastPlace];
-                    lastPlace -= 1;
-                }
-            }
-            else
-            {
-                counter++;
-                if (safeToUse.Count > 0 && safeToUse.Peek() != i) // we only need to move if we are not at the same place.
-                {
-                    nums[safeToUse.Dequeue()] = nums[i];
-                    nums[i] = val;
-                    safeToUse.Enqueue(i);
-                }
+        if (nums.Length == 1){
+            if(nums[0] == val){
+                return 0;
+            }else{
+                nums[0] = val;
+                return 1;
             }
         }
+            
 
+        
+        var counter = 0;
+        for (var i = 0; i < nums.Length; i++)
+        {
+            if (nums[i] != val)
+            {
+                nums[counter] = nums[i];
+                counter++;
+            }
+            
+        }
         return counter;
     }
 
