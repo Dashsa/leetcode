@@ -21,7 +21,8 @@ var resursionManager = new RecursionManager();
 // stringManager.TwoPointerWeight(15, new List<int> { 1, 2, 3, 8, 9 });
 
 // var nums = new int[] { 1, 2, 3, 1, 1, 3 };
-// var result = arrayManager.NumIdenticalPairs(nums);
+var nums = new int[] { 1, 1, 1, 1 };
+  var resulwwt = arrayManager.NumIdenticalPairs(nums);
 
 // var searchInput = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 // var isFound = AlgoManager.BinarySearch(searchInput, 8);
@@ -53,6 +54,9 @@ var resursionManager = new RecursionManager();
 // var haystack = "mississippi";
 // var needle = "issipi";
 // var result = stringManager.StrStr(haystack, needle);
+
+
+arrayManager.Works();
 
 var tree = new Node();
 tree = tree.CreateExampleTree(tree);

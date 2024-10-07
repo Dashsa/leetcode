@@ -153,7 +153,6 @@ public class StringManager
         var firstIndex = -1;
         for (var i = 0; i < haystack.Length; i++)
         {
-
             if (haystack[i] == needle[0])
             {
                 var tempIndex = i;
