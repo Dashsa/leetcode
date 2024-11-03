@@ -1,6 +1,26 @@
+public class RecursionManager
+{
+    public RecursionManager()
+    {
 
-public class RecursionManager { 
+    }
+
+    public int Factorial(int number)
+    {
+        if (number <= 1)
+        {
+            return number;
+        }
+        return number * Factorial(number - 1);
+    }
 
 
-
+    public int Fibonacci(int input)
+    {
+        if (input < 2)
+        {
+            return input;
+        }
+        return Fibonacci(input - 1) + Fibonacci(input - 2);
+    }
 }
