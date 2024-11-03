@@ -21,6 +21,9 @@ public class Node
         {
             return new Node(value);
         }
+        // Duplicates not allowed
+        if (root.Value == value)
+            return root;
 
         if (value < root.Value)
         {
