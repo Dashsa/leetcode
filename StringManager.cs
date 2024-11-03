@@ -147,21 +147,53 @@ public class StringManager
     // https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/
     public int StrStr(string haystack, string needle)
     {
-       // var leftPointer = 0;
-        // var rightPointer = 0;
+        if(needle.Length > haystack.Length){
+            return -1;
+        }
+        var firstIndex = -1;
+        for (var i = 0; i < haystack.Length; i++)
+        {
+            if (haystack[i] == needle[0])
+            {
+                var tempIndex = i;
+                
+                for (var j = 0; j < needle.Length; j++)
+                {
+                    if (haystack[tempIndex] != needle[j])
+                    {
+                        tempIndex = -1;
+                        break;
+                    }
+                    else { 
+                        tempIndex++;
+                    }
+                    if(j == needle.Length - 1){
+                        return i;
+                    }
 
-        // foreach (var i in haystack)
-        // {
-        //     if (i == needle[rightPointer])
-        //     {
-        //         foreach(var j in needle){
-        //             if(needle[j] != needle[i]){
-        //                 break;
-        //             }
-        //         }
-        //     }
-        // }
-        return 0;
+                }
+                
+            }
+
+        }
+        return firstIndex;
+    }
+
+    public string DefangIPaddr(string address)
+    {
+        var sb = new StringBuilder();
+        foreach (var i in address)
+        {
+            if (i == '.')
+            {
+                sb.Append("[.]");
+            }
+            else
+            {
+                sb.Append(i);
+            }
+        }
+        return sb.ToString();
     }
 
 }
