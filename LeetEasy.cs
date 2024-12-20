@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Text;
 
 public class LeetEasy
 {
@@ -143,7 +144,7 @@ public class LeetEasy
 
     //     while(deadNums.Count < n-1){
     //         for(var i = pointer; i < k; i ++){
-                
+
     //         }
 
     //     }
@@ -151,5 +152,74 @@ public class LeetEasy
 
     //     return 1;
     // }
+
+    public int MaxProfit(int[] prices)
+    {
+        var lp = 0;
+        var rp = 1;
+        var profit = 0;
+
+        while (rp < prices.Length)
+        {
+            if (prices[lp] < prices[rp])
+            {
+                var currProfit = prices[rp] - prices[lp];
+                profit = Math.Max(currProfit, profit);
+            }
+            else
+            {
+                lp = rp;
+            }
+            rp++;
+        }
+        return profit;
+
+    }
+
+    public int Search(int[] nums, int target)
+    {
+        var min = 0;
+        var max = nums.Length - 1;
+
+        while (min <= max)
+        {
+            var midPoint = min + ((max - min) / 2);
+            if (target == nums[midPoint])
+            {
+                return midPoint;
+            }
+            else if (nums[midPoint] > target)
+            {
+                max = midPoint - 1;
+            }
+            else
+            {
+                min = midPoint + 1;
+            }
+        }
+        return -1;
+    }
+
+    //https://leetcode.com/problems/reverse-integer/
+    public int Reverse(int x)
+    {
+        var q = new Queue<string>();
+        var strResponse = new StringBuilder();
+        while (x > 0)
+        {
+            var temp = x % 10;
+            x = x / 10;
+
+            q.Enqueue(temp.ToString());
+        }
+
+        while (q.Count > 0)
+        {
+            strResponse.Append(q.Dequeue());
+        }
+
+        return Convert.ToInt32(strResponse.ToString());
+    }
+
 
 }

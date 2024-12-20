@@ -1,4 +1,5 @@
 using System.Text;
+using System.Text.RegularExpressions;
 
 public class StringManager
 {
@@ -145,38 +146,38 @@ public class StringManager
     }
 
     // https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/
+    // Works!
+    
     public int StrStr(string haystack, string needle)
     {
-        if(needle.Length > haystack.Length){
+        // If needle is longer than haystack, it's impossible to find
+        if (needle.Length > haystack.Length)
+        {
             return -1;
         }
-        var firstIndex = -1;
-        for (var i = 0; i < haystack.Length; i++)
-        {
-            if (haystack[i] == needle[0])
-            {
-                var tempIndex = i;
-                
-                for (var j = 0; j < needle.Length; j++)
-                {
-                    if (haystack[tempIndex] != needle[j])
-                    {
-                        tempIndex = -1;
-                        break;
-                    }
-                    else { 
-                        tempIndex++;
-                    }
-                    if(j == needle.Length - 1){
-                        return i;
-                    }
 
+        // Iterate through haystack, but stop early if the remaining length is shorter than needle
+        for (int i = 0; i <= haystack.Length - needle.Length; i++)
+        {
+            // Check if the substring starting at i matches needle
+            int j;
+            for (j = 0; j < needle.Length; j++)
+            {
+                if (haystack[i + j] != needle[j])
+                {
+                    break; // Mismatch found, break out of inner loop
                 }
-                
             }
 
+            // If the inner loop completed fully, we have found the needle
+            if (j == needle.Length)
+            {
+                return i; // Return the starting index of the match
+            }
         }
-        return firstIndex;
+
+        // If no match is found, return -1
+        return -1;
     }
 
     public string DefangIPaddr(string address)
@@ -194,6 +195,30 @@ public class StringManager
             }
         }
         return sb.ToString();
+    }
+
+     // https://leetcode.com/problems/valid-palindrome/
+     // Input: s = "A man, a plan, a canal: Panama" ====? Output: true
+    // Explanation: "amanaplanacanalpanama" is a palindrome.
+     public bool IsPalindrome(string s) {
+       if(s.Length <= 1){
+            return true;
+       }
+
+        s.Trim();
+        Regex rgx = new Regex("[^a-zA-Z0-9 -]");
+        var str = rgx.Replace(s.ToLower(), "");
+       str =  Regex.Replace(str, @"\s", string.Empty);
+       var l = 0; 
+       var r = str.Length -1;
+       while(r >=l){
+        if(str[r] != str[l]){
+            return false;
+        }
+        l ++;
+        r --;
+       }
+       return true;
     }
 
 }
