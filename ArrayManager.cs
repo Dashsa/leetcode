@@ -5,8 +5,15 @@ public class ArrayManager
 {
     public void Works()
     {
+
+        string s = "SoloLearn";
+        int x = s.Length;
+        int y = s.IndexOf("e");
+        var foos = (x % y);
+
         Console.WriteLine("Array Manager");
         var myArray = new string[] { "a", "b", "c" };
+
         // this is a safe way to access an array and not worry about out of bounds.
         var foo = myArray[3 % myArray.Length];
         var moo = myArray[4 % myArray.Length];
@@ -45,7 +52,7 @@ public class ArrayManager
     public int NumIdenticalPairs(int[] nums)
     {
         var result = 0;
-//[1,1,1,1]
+        //[1,1,1,1]
         var goodPairs = new Dictionary<int, int>();
         foreach (var num in nums)
         {
@@ -182,4 +189,46 @@ public class ArrayManager
 
         return result;
     }
+
+    //Top K Frequent Elements
+    //  Given an integer array nums and an integer k, return the k most frequent elements within the array.
+    // The test cases are generated such that the answer is always unique. You may return the output in any order.
+    // Input: nums = [1,2,2,3,3,3], k = 2 ----->  Output: [2,3]  
+
+
+//     nums=[3,0,1,0] ==> k=1 
+    public int[] TopKFrequent(int[] nums, int k)
+    {
+        if (nums.Length == k)
+        {
+            return nums;
+        }
+        var foo = new List<int>();
+        var resultDict = new Dictionary<int, int>();
+
+        foreach (var item in nums)
+        {
+            if (!resultDict.ContainsKey(item))
+            {
+                resultDict.Add(item, 1);
+            }
+            else
+            {
+                resultDict[item]++;
+            }
+        }
+
+        var counter = 0;
+        foreach (KeyValuePair<int, int> i in resultDict)
+        {
+            if (counter <= k)
+            {
+                foo.Add(i.Key);
+            }
+            
+        }
+        return foo.ToArray<int>();
+    }
+
+   
 }

@@ -8,22 +8,27 @@ public class LinkedListManager
     public ListNode MergeTwoLists(ListNode list1, ListNode list2)
     {
         var result = new ListNode();
+        var current = result;
 
-        while (list1.next != null && list2.next != null)
+        while (list1 != null && list2 != null)
         {
+            var tempVal = 0;
             if (list1.val <= list2.val)
             {
-                result.val = list1.val;
+                tempVal = list1.val;
                 list1 = list1.next;
             }
             else
             {
-                result.val = list2.val;
+                tempVal = list2.val;
                 list2 = list2.next;
             }
-
-
+            var newNode = new ListNode(tempVal);
+            current.next = newNode;
+            current = current.next;
         }
+        // Attach the remaining nodes from the non-empty list
+        current.next = list1 ?? list2;
 
         return result;
     }

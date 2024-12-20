@@ -17,7 +17,7 @@ public class RecursionManager
 
     public int Fibonacci(int input)
     {
-        if (input < 2)
+        if (input < 2) // fib 1 = 1, fib 0 = 0
         {
             return input;
         }
