@@ -9,9 +9,25 @@ var nodeManager = new NodeManager();
 var resursionManager = new RecursionManager();
 var linkedListManager = new LinkedListManager();
 
-//var rr = 12467;
 
-//var s = new Queue<int>();
+int[][] intervals = new[] { new[] { 1, 3 }, new[] { 2, 6 }, new[] { 8, 10 }, new[] { 15, 18 } };
+
+
+
+// foreach (int[] pair in data) {
+//     foreach (int number in pair) {
+//         Console.Write(number + " ");
+//     }
+//     Console.WriteLine();
+// }
+
+var goo = new List<int> { 25, 34, 1, 5, 6, 8, 10 };
+var pQueue = new PriorityQueue<int, int>();
+foreach (var i in goo)
+{
+    pQueue.Enqueue(i, i);
+}
+
 
 
 

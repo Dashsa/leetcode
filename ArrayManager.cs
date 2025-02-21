@@ -196,7 +196,7 @@ public class ArrayManager
     // Input: nums = [1,2,2,3,3,3], k = 2 ----->  Output: [2,3]  
 
 
-//     nums=[3,0,1,0] ==> k=1 
+    //     nums=[3,0,1,0] ==> k=1 
     public int[] TopKFrequent(int[] nums, int k)
     {
         if (nums.Length == k)
@@ -225,10 +225,43 @@ public class ArrayManager
             {
                 foo.Add(i.Key);
             }
-            
+
         }
         return foo.ToArray<int>();
     }
 
-   
+
+    // Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+    // Example 1:
+    // Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+    // Output: [[1,6],[8,10],[15,18]]
+    // Explanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].
+    // WORKS!
+    public int[][] Merge(int[][] intervals)
+    {
+        var result = new List<int[]>();
+        Array.Sort(intervals, (a, b) => a[0].CompareTo(b[0])); // we need to ensure that we sort the first elements.
+
+        var current = intervals[0]; // Start with the first interval
+        result.Add(current);
+
+        //notice we start at 1 here - makes comparrisons easier.
+        for (var i = 1; i < intervals.Length; i++)
+        {
+            var next = intervals[i];
+
+            if (next[0] <= current[1]) // Overlapping intervals
+            {
+                current[1] = Math.Max(current[1], next[1]); // Merge by extending the end
+            }
+            else
+            {
+                current = next; // Move to next interval
+                result.Add(current);
+            }
+        }
+
+        return result.ToArray();
+    }
+
 }
